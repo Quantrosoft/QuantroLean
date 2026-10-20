@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyLean Monte Carlo</title>
+<style>
+  :root{
+    --bg:#0f1420; --panel:#141b2b; --panel2:#1a2238; --line:#2a3350;
+    --fg:#e6e6e6; --dim:#9fb0d0; --accent:#7aa2ff;
+  }
+  *{box-sizing:border-box}
+  body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:24px;line-height:1.5}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--dim);font-size:13px;margin-bottom:18px}
+  h2{font-size:15px;color:var(--accent);margin:22px 0 8px}
+  .wrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:13px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  thead th{background:var(--panel2)}
+  th.feat,td.feat{background:var(--panel);font-weight:600;white-space:nowrap}
+  code{color:#cfe0ff;font-size:12px;background:var(--panel2);padding:1px 5px;border-radius:3px}
+  p{max-width:70ch}
+  footer{margin-top:22px;font-size:11.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:12px}
+</style>
+</head>
+<body>
+  <h1>MyLean &mdash; Monte Carlo</h1>
+  <div class="sub">What the Monte Carlo tools in this repository compute. An independent implementation written from
+  the methods' textbook definitions.</div>
+
+  <p>Monte Carlo estimates how much of a backtest's result is luck and what the downside looks like, by running the
+  strategy's outcome many times under resampling. MyLean has two tools: <code>tools/MonteCarlo</code> resamples the
+  strategy's closed-trade profits, and <code>tools/MonteCarloSpp</code> resamples the price series and re-runs the
+  whole backtest on each synthetic path. Both are deterministic: the same seed yields an identical result.</p>
+
+  <h2>Methods</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th class="feat">Method</th><th>What it resamples</th></tr></thead>
+    <tbody>
+      <tr><td class="feat">Reshuffle</td><td>a random permutation of the trades (no replacement): same trades, new order</td></tr>
+      <tr><td class="feat">Bootstrap</td><td>the i.i.d. bootstrap: n trades drawn with replacement</td></tr>
+      <tr><td class="feat">Block bootstrap</td><td>contiguous blocks of a configurable length, drawn with replacement (wrapping around)</td></tr>
+      <tr><td class="feat">Stationary bootstrap</td><td>blocks of random, geometrically distributed length (mean = block size)</td></tr>
+      <tr><td class="feat">Synthetic price path</td><td>resamples the bar returns into a synthetic price series and re-runs the whole backtest on it</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Per-metric distributions</h2>
+  <p>For net profit, max drawdown (equity drawdown), max drawdown percent, profit factor, Sharpe ratio and final
+  equity: mean, median, min, max, P5, P95, a histogram, and the backtesting percentile of the real run (the fraction
+  of simulations at or below the real value). Drawdown always means the equity drawdown, built from the trade
+  profits (or the host's tick-exact equity), not from daily returns.</p>
+
+  <h2>Risk measures</h2>
+  <div class="wrap">
+  <table>
+    <thead><tr><th class="feat">Measure</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td class="feat">P(profitable)</td><td>fraction of simulations with a positive net profit</td></tr>
+      <tr><td class="feat">Risk of ruin</td><td>fraction whose equity ever falls to or below the ruin threshold (a configurable fraction of the initial capital)</td></tr>
+      <tr><td class="feat">Value at risk</td><td>the loss not exceeded at the configured confidence (default 95%)</td></tr>
+      <tr><td class="feat">Conditional VaR</td><td>the mean loss in the tail beyond the value at risk</td></tr>
+      <tr><td class="feat">Equity confidence bands</td><td>the P5 / P50 / P95 of the simulated equity after each trade</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Settings and output</h2>
+  <p>Settings: method, iterations, seed, block size and ruin level. Output: a per-simulation CSV, a summary JSON and
+  an optional HTML page. The same seed and input produce byte-identical files; no wall-clock time is written. See
+  <code>tools/MonteCarlo/README.md</code> and <code>tools/MonteCarloSpp/README.md</code>.</p>
+
+  <footer>MIT, Quantrosoft Pte. Ltd. Independent implementation; the methods follow their standard textbook
+  definitions.</footer>
+</body>
+</html>

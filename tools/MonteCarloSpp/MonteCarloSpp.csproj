@@ -1,0 +1,61 @@
+<!--
+  MIT License
+  Copyright (c) 2025 Quantrosoft Pte. Ltd.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  Independent implementation. The synthetic price path method is written from its textbook definition
+  (resample the bar returns, rebuild a price series, re-run the backtest); no code is taken from elsewhere.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    MyLean Monte Carlo - Synthetic Price Path: rebuilds synthetic price series by resampling the backtest's bar
+    returns, writes them as Lean data with Lean's own LeanDataWriter, and re-runs the whole MyLean backtest on each
+    one, then analyses the distribution of the result metrics with the same statistics as the trade-resampling tool.
+    Needs the Lean packages (data writer and types); the statistics and reporting are shared with ..\MonteCarlo.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RootNamespace>MyLean.MonteCarlo.Spp</RootNamespace>
+    <AssemblyName>MonteCarloSpp</AssemblyName>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Description>MyLean: Monte Carlo synthetic price path (re-runs the backtest on resampled price series)</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuantConnect.Common" />
+    <PackageReference Include="QuantConnect.Lean.Engine" />
+    <PackageReference Include="QuantConnect.Logging" />
+    <PackageReference Include="QuantConnect.Configuration" />
+  </ItemGroup>
+
+  <!-- Shared with the trade-resampling tool: the generator, resamplers, statistics, metrics and reporting. -->
+  <ItemGroup>
+    <Compile Include="..\MonteCarlo\DeterministicRandom.cs" Link="Shared\DeterministicRandom.cs" />
+    <Compile Include="..\MonteCarlo\Resamplers.cs" Link="Shared\Resamplers.cs" />
+    <Compile Include="..\MonteCarlo\Statistics.cs" Link="Shared\Statistics.cs" />
+    <Compile Include="..\MonteCarlo\TradeSeries.cs" Link="Shared\TradeSeries.cs" />
+    <Compile Include="..\MonteCarlo\MonteCarloEngine.cs" Link="Shared\MonteCarloEngine.cs" />
+    <Compile Include="..\MonteCarlo\Report.cs" Link="Shared\Report.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,52 @@
+<!--
+  MIT License
+  Copyright (c) 2025 Quantrosoft Pte. Ltd.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+
+  Independent implementation: the downloader is written from Dukascopy's public .bi5 feed format; no code is
+  taken from any third party. The files under Lzma/ are the public-domain LZMA SDK (see Lzma/LZMA-SDK-NOTICE.txt).
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Dukascopy data source for MyLean: a Lean IDataDownloader that fetches free historical tick data for forex and
+    CFDs from Dukascopy's public feed. Part of this repository (referenced by MyLauncher and MyDownloader), with no
+    runtime NuGet dependencies of its own (the LZMA decoder is compiled in). The Lean package versions come from
+    Directory.Packages.props.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>QuantConnect.DataSource.Dukascopy</AssemblyName>
+    <RootNamespace>QuantConnect.Lean.DataSource.Dukascopy</RootNamespace>
+    <Product>QuantConnect LEAN Dukascopy Data Source</Product>
+    <Company>Quantrosoft Pte. Ltd.</Company>
+    <Description>Free Dukascopy historical tick data (forex and CFDs) as a Lean IDataDownloader.</Description>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="QuantConnect.Common" />
+    <PackageReference Include="QuantConnect.Lean.Engine" />
+    <PackageReference Include="QuantConnect.Logging" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,44 @@
+<!--
+  MIT License
+  Copyright (c) 2025 Quantrosoft Pte. Ltd.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Compile check of the NinjaShim on its own (with NinjaTrader's stock sources of the local installation).
+    NOT what algorithms consume: a NinjaScript strategy's source has to be compiled into the SAME assembly as the shim
+    (NinjaScript's partial classes only merge within one assembly), so algorithm projects include these sources by
+    glob - see src/Algorithms/MyAlgo.NinjaScript.
+    NinjaScript code uses WPF types (System.Windows.Media.Brush...), hence net10.0-windows + UseWPF.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>MyLean.NinjaShim</AssemblyName>
+    <RootNamespace>MyLean.NinjaShim</RootNamespace>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <!-- NinjaScript sources compile with warnings NinjaTrader's own compiler does not show -->
+    <NoWarn>0108;0162;0168;0219;0414;0649;1591;CS8002</NoWarn>
+  </PropertyGroup>
+  <Import Project="NinjaTrader8.props" />
+</Project>

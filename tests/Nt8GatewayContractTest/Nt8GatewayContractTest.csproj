@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AssemblyName>Nt8GatewayContractTest</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="LogShim.cs" />
+    <!-- Compile the shipped brokerage client in, so the test drives the real GatewayClient code
+         (it is internal; a Link include keeps it in this assembly). The client's only external
+         dependency is QuantConnect.Logging.Log, stubbed by LogShim.cs so no Lean assemblies are needed. -->
+    <Compile Include="..\..\src\Brokerages\NinjaTrader8\GatewayClient.cs" Link="GatewayClient.cs" />
+  </ItemGroup>
+</Project>
