@@ -35,13 +35,13 @@
     <PackageVersion Include="QuantConnect.Algorithm.Framework" Version="2.5.18164" />
     <PackageVersion Include="QuantConnect.AlgorithmFactory" Version="2.5.18164" />
     <PackageVersion Include="QuantConnect.Api" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Brokerages" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Common" Version="2.5.18164" />
+    <PackageVersion Include="QuantConnect.Brokerages" Version="2.5.18193" />
+    <PackageVersion Include="QuantConnect.Common" Version="2.5.18193" />
     <PackageVersion Include="QuantConnect.Compression" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Configuration" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Indicators" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Lean.Engine" Version="2.5.18164" />
-    <PackageVersion Include="QuantConnect.Logging" Version="2.5.18164" />
+    <PackageVersion Include="QuantConnect.Configuration" Version="2.5.18193" />
+    <PackageVersion Include="QuantConnect.Indicators" Version="2.5.18193" />
+    <PackageVersion Include="QuantConnect.Lean.Engine" Version="2.5.18193" />
+    <PackageVersion Include="QuantConnect.Logging" Version="2.5.18193" />
     <PackageVersion Include="QuantConnect.Messaging" Version="2.5.18164" />
     <PackageVersion Include="QuantConnect.Optimizer" Version="2.5.18164" />
     <PackageVersion Include="QuantConnect.Queues" Version="2.5.18164" />
