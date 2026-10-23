@@ -1,0 +1,42 @@
+<!--
+  MIT License
+  Copyright (c) 2025 Quantrosoft Pte. Ltd.
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+-->
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    NinjaScript strategies (Strategies\*.cs, written as for NinjaTrader 8) compiled together with the NinjaShim and
+    the Lean host into one algorithm assembly. Lean loads it as algorithm-type-name NinjaScriptAlgorithm; the
+    parameter "strategy" picks the NinjaScript class. Requires NinjaTrader 8 on this PC (src/NinjaShim/NinjaTrader8.props).
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>MyAlgo.NinjaScript</AssemblyName>
+    <RootNamespace>NinjaTrader.NinjaScript.Strategies</RootNamespace>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <!-- NinjaScript sources compile with warnings NinjaTrader's own compiler does not show -->
+    <NoWarn>0108;0162;0168;0219;0414;0649;1591;CS8002</NoWarn>
+  </PropertyGroup>
+  <Import Project="..\..\NinjaHost\NinjaHost.props" />
+</Project>

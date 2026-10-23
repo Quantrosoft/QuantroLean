@@ -1,0 +1,16 @@
+LZMA SDK (public domain)
+
+The files in this folder
+
+    ICoder.cs
+    LzmaBase.cs
+    LzmaDecoder.cs
+    LzOutWindow.cs
+    RangeCoder.cs
+    RangeCoderBit.cs
+    RangeCoderBitTree.cs
+
+are the C# decoder of the LZMA SDK by Igor Pavlov (www.7-zip.org/sdk.html).
+The LZMA SDK is placed in the public domain. The files are used unchanged, only
+the files not needed to decode are left out. Dukascopy's .bi5 tick files are
+LZMA-"alone" streams, which this decoder reads.

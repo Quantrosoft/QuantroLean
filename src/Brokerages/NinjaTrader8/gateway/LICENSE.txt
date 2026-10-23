@@ -1,0 +1,30 @@
+NinjaTrader 8 gateway companion - proprietary license
+======================================================
+
+Files covered:
+    NinjaTrader8.Gateway.exe
+    NinjaTrader8.Gateway.exe.config
+    nt8native.dll
+(the bundled binaries in this folder).
+
+Copyright (c) Quantrosoft Pte. Ltd. All rights reserved.
+
+These binaries are PROPRIETARY software. They are NOT open source and are NOT
+covered by the MIT or Apache License 2.0 that applies to the source code of this
+repository (see the top-level LICENSE.txt). They are bundled with MyLean only as
+a convenience, so that a fresh clone builds and can connect to NinjaTrader 8 out
+of the box.
+
+Permitted:
+    Using these binaries, unmodified, together with MyLean, to connect to
+    NinjaTrader 8. Their use is subject to Quantrosoft's own licence terms.
+
+Not permitted without the prior written permission of Quantrosoft Pte. Ltd.:
+    redistribution of the binaries outside this repository, modification,
+    decompilation, disassembly or reverse engineering.
+
+THE BINARIES ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+Contact: Quantrosoft Pte. Ltd.
