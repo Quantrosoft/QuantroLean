@@ -45,7 +45,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="QuantConnect.Brokerages" />
     <PackageReference Include="QuantConnect.Common" />
+    <PackageReference Include="QuantConnect.Indicators" />
     <PackageReference Include="QuantConnect.Lean.Engine" />
     <PackageReference Include="QuantConnect.Logging" />
   </ItemGroup>
