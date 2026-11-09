@@ -24,27 +24,30 @@
   <!--
     NuGet Central Package Management: every package version of the solution is set here, once.
     All QuantConnect.* packages are built from the same Lean commit and must carry the same version;
-    the Lean sources copied into src/Lean must match that commit (see README, "Updating Lean").
-    2.5.18193 = Lean commit d4cac37514427c84d40064cecbf3f0e6be4b0137.
+    the Lean sources copied into src/Lean are re-synced from that commit on a full Lean update
+    (see README, "Updating Lean").
+    2.5.18229 = Lean commit c4678f705fea682c73429469a4e88e1bc0a506a0 (bumped from 2.5.18193 /
+    d4cac37514427c84d40064cecbf3f0e6be4b0137; the copied src/Lean entry-point sources compile clean
+    against 2.5.18229 and are re-synced to c4678f70 at the next full Lean source update).
   -->
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="QuantConnect.Algorithm" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Algorithm.Framework" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.AlgorithmFactory" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Api" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Brokerages" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Common" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Compression" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Configuration" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Indicators" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Lean.Engine" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Logging" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Messaging" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Optimizer" Version="2.5.18193" />
-    <PackageVersion Include="QuantConnect.Queues" Version="2.5.18193" />
+    <PackageVersion Include="QuantConnect.Algorithm" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Algorithm.Framework" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.AlgorithmFactory" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Api" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Brokerages" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Common" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Compression" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Configuration" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Indicators" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Lean.Engine" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Logging" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Messaging" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Optimizer" Version="2.5.18229" />
+    <PackageVersion Include="QuantConnect.Queues" Version="2.5.18229" />
     <PackageVersion Include="DynamicInterop" Version="0.9.1" />
   </ItemGroup>
 </Project>
