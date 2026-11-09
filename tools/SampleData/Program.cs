@@ -40,7 +40,7 @@ namespace MyLean.Tools.SampleData
    /// without touching it.</summary>
    internal static class Program
    {
-      private const string LeanCommit = "d4cac37514427c84d40064cecbf3f0e6be4b0137";
+      private const string LeanCommit = "c4678f705fea682c73429469a4e88e1bc0a506a0";
 
       private static readonly (string Path, long Size, string Sha256)[] Files =
       {
