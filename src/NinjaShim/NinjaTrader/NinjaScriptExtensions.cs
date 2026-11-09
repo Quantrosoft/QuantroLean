@@ -157,7 +157,7 @@ namespace NinjaTrader.NinjaScript
       public TradeCollection AllTrades      { get; set; } = Mit();
       public TradeCollection LongTrades     { get; set; } = Mit();
       public TradeCollection ShortTrades    { get; set; } = Mit();
-      public TradeCollection RealtimeTrades { get; set; } = Mit();
+      public TradeCollection RealTimeTrades { get; set; } = Mit();
    }
 
    public class TradeCollection : List<Trade>

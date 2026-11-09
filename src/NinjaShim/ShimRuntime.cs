@@ -469,6 +469,19 @@ namespace MyLean.NinjaShim
                bucket.TradesCount++;
                AddToPerformance(bucket.TradesPerformance, trade);
             }
+
+            // NT8 fills SystemPerformance.RealTimeTrades with trades closed in real time
+            // (live or market replay, once past the warm-up gate); a plain backtest leaves it empty.
+            if ((PlaybackMode || LiveMode) && _warmupGateOpen)
+            {
+               var realtime = st.SystemPerformance?.RealTimeTrades;
+               if (realtime != null)
+               {
+                  realtime.Add(trade);
+                  realtime.TradesCount++;
+                  AddToPerformance(realtime.TradesPerformance, trade);
+               }
+            }
          }
       }
 
