@@ -31,7 +31,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using QuantConnect.Logging;
 
-namespace MyLean.Brokerages.NinjaTrader8
+namespace QuantroLean.Brokerages.NinjaTrader8
 {
     /// <summary>
     /// The NinjaTrader 8 gateway process (`NinjaTrader8.Gateway.exe serve`) and the TCP session to it. The protocol:

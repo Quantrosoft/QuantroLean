@@ -23,7 +23,7 @@ SOFTWARE.
 using System;
 using System.Globalization;
 
-namespace MyLean.NinjaHost
+namespace QuantroLean.NinjaHost
 {
    /// <summary>Tick-exact equity drawdown, measured by the host itself: the account equity including the open
    /// position valued at the price its market exit would fill at (bid for a long, ask for a short) is sampled

@@ -1,6 +1,6 @@
 # NinjaTrader 8 gateway companion (bundled binaries)
 
-These files are the NinjaTrader 8 gateway companion, shipped with MyLean as **binaries only** so a fresh clone builds
+These files are the NinjaTrader 8 gateway companion, shipped with QuantroLean as **binaries only** so a fresh clone builds
 and can live-connect to NinjaTrader 8 out of the box — the `ninjatrader8-gateway` configuration defaults to the host
 here. There is no source for them in this repository; the gateway is a separate, licensed build.
 

@@ -1,4 +1,4 @@
-# Testing MyLean
+# Testing QuantroLean
 
 Commands and expected results to verify every feature on a clean checkout. The numeric results are deterministic:
 Lean backtests, the immutable Dukascopy history and the seeded Monte Carlo all reproduce the same values. Run from
@@ -6,9 +6,9 @@ the repository root unless noted. `.NET 10 SDK` is required; the NinjaShim tests
 
 ## 1. Build
 
-    dotnet build MyLean.sln
+    dotnet build QuantroLean.sln
 
-Expected: build succeeds, 0 errors. With NinjaTrader 8 installed, also `dotnet build MyLean.NinjaTrader.sln`.
+Expected: build succeeds, 0 errors. With NinjaTrader 8 installed, also `dotnet build QuantroLean.NinjaTrader.sln`.
 
 ## 2. Sample data
 
@@ -18,8 +18,8 @@ Expected: the SPY sample data and the data-folder files are written into `data/`
 
 ## 3. Backtest (C# example, no network)
 
-    cd src/Lean/MyLauncher/bin/Debug
-    MyLauncher --results-destination-folder out
+    cd src/Lean/QuantroLeanLauncher/bin/Debug
+    QuantroLeanLauncher --results-destination-folder out
 
 Expected (SmaCrossoverAlgorithm on the SPY minute sample):
 - `STATISTICS:: Total Orders 85`
@@ -28,8 +28,8 @@ Expected (SmaCrossoverAlgorithm on the SPY minute sample):
 
 ## 4. Dukascopy download and content check (network)
 
-    cd src/Lean/MyDownloader/bin/Debug
-    MyDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
+    cd src/Lean/QuantroLeanDownloader/bin/Debug
+    QuantroLeanDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
                  --security-type Cfd --market dukascopy --resolution Tick --start-date 20240102 --end-date 20240103
 
 Expected:
@@ -41,8 +41,8 @@ The feed throttles heavy use; a day can take a few minutes with retries. This is
 
 ## 5. Dukascopy backtest (needs step 4's data, no network)
 
-    cd src/Lean/MyLauncher/bin/Debug
-    MyLauncher --algorithm-type-name DukascopyExampleAlgorithm --results-destination-folder out_duka
+    cd src/Lean/QuantroLeanLauncher/bin/Debug
+    QuantroLeanLauncher --algorithm-type-name DukascopyExampleAlgorithm --results-destination-folder out_duka
 
 Expected (DukascopyExampleAlgorithm on the EUR_USD minute data of 2024-01-02):
 - `STATISTICS:: Total Orders 30`
@@ -68,7 +68,7 @@ Expected:
 ## 7. Monte Carlo, synthetic price path (needs step 4's data, no extra network)
 
     cd tools/MonteCarloSpp/bin/Debug
-    MonteCarloSpp --data-folder <repo>/data --launcher <repo>/src/Lean/MyLauncher/bin/Debug/MyLauncher.exe \
+    MonteCarloSpp --data-folder <repo>/data --launcher <repo>/src/Lean/QuantroLeanLauncher/bin/Debug/QuantroLeanLauncher.exe \
                   --start-date 20240102 --end-date 20240103 --method block --iterations 30 --seed 42 --out-dir a
     MonteCarloSpp ... (identical, --out-dir b)
 
@@ -79,7 +79,7 @@ Expected:
 
 ## 8. NinjaShim host smoke test (needs NinjaTrader 8)
 
-    dotnet build MyLean.NinjaTrader.sln
+    dotnet build QuantroLean.NinjaTrader.sln
     dotnet run --project tests/NinjaHost.SmokeTest
 
 Expected: exit code 0 and a final `PASS:` line (bars equal to Lean's, the strategy traded, every fill equals Lean's
@@ -92,8 +92,8 @@ The gateway host is bundled (`gateway/` next to the launcher) and is the `ninjat
 `ninjatrader8-connection` / `ninjatrader8-account` in `config.json` (or leave empty for the dropdown), and the contract
 your Demo streams in `"parameters"`: `"nt8-contract": "MNQ 12-26"`, then:
 
-    cd src/Lean/MyLauncher/bin/Debug
-    MyLauncher --environment live-ninjatrader8 --algorithm-type-name NinjaTrader8LiveTicksAlgorithm
+    cd src/Lean/QuantroLeanLauncher/bin/Debug
+    QuantroLeanLauncher --environment live-ninjatrader8 --algorithm-type-name NinjaTrader8LiveTicksAlgorithm
 
 Expected: the gateway starts, the brokerage connects to the Demo/Sim account, and the console logs live quote/trade
 ticks of the contract. The connect log line names the gateway protocol and version; a gateway protocol the brokerage

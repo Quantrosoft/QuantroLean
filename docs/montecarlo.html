@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MyLean Monte Carlo</title>
+<title>QuantroLean Monte Carlo</title>
 <style>
   :root{
     --bg:#0f1420; --panel:#141b2b; --panel2:#1a2238; --line:#2a3350;
@@ -25,12 +25,12 @@
 </style>
 </head>
 <body>
-  <h1>MyLean &mdash; Monte Carlo</h1>
+  <h1>QuantroLean &mdash; Monte Carlo</h1>
   <div class="sub">What the Monte Carlo tools in this repository compute. An independent implementation written from
   the methods' textbook definitions.</div>
 
   <p>Monte Carlo estimates how much of a backtest's result is luck and what the downside looks like, by running the
-  strategy's outcome many times under resampling. MyLean has two tools: <code>tools/MonteCarlo</code> resamples the
+  strategy's outcome many times under resampling. QuantroLean has two tools: <code>tools/MonteCarlo</code> resamples the
   strategy's closed-trade profits, and <code>tools/MonteCarloSpp</code> resamples the price series and re-runs the
   whole backtest on each synthetic path. Both are deterministic: the same seed yields an identical result.</p>
 

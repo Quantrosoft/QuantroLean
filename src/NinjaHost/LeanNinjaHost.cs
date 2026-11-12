@@ -26,8 +26,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using MyLean.NinjaShim;
-using MyLean.NinjaShim.Hosting;
+using QuantroLean.NinjaShim;
+using QuantroLean.NinjaShim.Hosting;
 using NinjaTrader.NinjaScript;
 using QuantConnect;
 using QuantConnect.Algorithm;
@@ -37,7 +37,7 @@ using QuantConnect.Orders;
 using QuantConnect.Securities;
 using Strategy = NinjaTrader.NinjaScript.Strategies.Strategy;
 
-namespace MyLean.NinjaHost
+namespace QuantroLean.NinjaHost
 {
    /// <summary>The primary series of the hosted strategy, from the "bars" parameter: Minute,N | Second,N | Tick,N.</summary>
    public sealed class PrimarySeriesSpec

@@ -27,7 +27,7 @@ using QuantConnect.Brokerages;
 using QuantConnect.Securities;
 using QuantConnect.Securities.Future;
 
-namespace MyLean.Brokerages.NinjaTrader8
+namespace QuantroLean.Brokerages.NinjaTrader8
 {
     /// <summary>
     /// Lean symbols and NinjaTrader 8 instrument names. Futures only: NinjaTrader names a contract "ROOT MM-YY" by its

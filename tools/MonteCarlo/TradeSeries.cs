@@ -24,7 +24,7 @@ Independent implementation. The metrics are computed from their textbook definit
 
 using System.Globalization;
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>
 /// The result metrics of one equity path: all five that the Monte Carlo reports, plus the drawdown in percent.

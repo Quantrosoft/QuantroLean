@@ -25,8 +25,8 @@
 -->
 <Project Sdk="Microsoft.NET.Sdk">
   <!--
-    Dukascopy data source for MyLean: a Lean IDataDownloader that fetches free historical tick data for forex and
-    CFDs from Dukascopy's public feed. Part of this repository (referenced by MyLauncher and MyDownloader), with no
+    Dukascopy data source for QuantroLean: a Lean IDataDownloader that fetches free historical tick data for forex and
+    CFDs from Dukascopy's public feed. Part of this repository (referenced by QuantroLeanLauncher and QuantroLeanDownloader), with no
     runtime NuGet dependencies of its own (the LZMA decoder is compiled in). The Lean package versions come from
     Directory.Packages.props.
   -->

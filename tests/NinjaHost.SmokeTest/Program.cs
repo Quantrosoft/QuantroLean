@@ -29,23 +29,23 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
-namespace MyLean.Tests.NinjaHostSmokeTest
+namespace QuantroLean.Tests.NinjaHostSmokeTest
 {
    /// <summary>End-to-end test of the NinjaScript host: runs the example NinjaScript strategy (SmaCrossoverStrategy)
-   /// with MyLauncher.NinjaTrader on Lean's SPY ticks of 2013-10-07 and checks
+   /// with QuantroLeanLauncher.NinjaTrader on Lean's SPY ticks of 2013-10-07 and checks
    ///   - the run ends with exit code 0 (the host itself stops on a tick-time, position or bar mismatch),
    ///   - every primary bar was compared with Lean's own consolidation of the same ticks, and there are bars at all,
    ///   - the strategy traded, every entry and exit was routed to Lean, and Lean filled each one,
    ///   - every fill of the strategy (NinjaTrader rules) equals Lean's fill of the mirrored order: time, quantity, price.
    /// Needs the sample data in data/ (tools/SampleData) and the built launcher.
-   /// Usage: NinjaHost.SmokeTest [--launcher-dir &lt;MyLauncher.NinjaTrader output folder&gt;] [--config &lt;config.json&gt;]
+   /// Usage: NinjaHost.SmokeTest [--launcher-dir &lt;QuantroLeanLauncher.NinjaTrader output folder&gt;] [--config &lt;config.json&gt;]
    /// (--config runs the launcher with another configuration, e.g. to prove that the checks fail on a difference)</summary>
    internal static class Program
    {
       private static int Main(string[] args)
       {
          string dir = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "src", "Lean",
-                                                    "MyLauncher.NinjaTrader", "bin", "Debug"));
+                                                    "QuantroLeanLauncher.NinjaTrader", "bin", "Debug"));
          string config = null;
          for (int i = 0; i < args.Length; i++)
          {
@@ -53,11 +53,11 @@ namespace MyLean.Tests.NinjaHostSmokeTest
             else if (args[i] == "--config" && i + 1 < args.Length) config = Path.GetFullPath(args[++i]);
             else return Fail($"unknown argument '{args[i]}'");
          }
-         var exe = Path.Combine(dir, "MyLauncher.NinjaTrader.exe");
+         var exe = Path.Combine(dir, "QuantroLeanLauncher.NinjaTrader.exe");
          if (!File.Exists(exe)) return Fail($"launcher not built: {exe}");
          if (config != null && !File.Exists(config)) return Fail($"config file not found: {config}");
 
-         var results = Path.Combine(Path.GetTempPath(), "MyLean.NinjaHost.SmokeTest");
+         var results = Path.Combine(Path.GetTempPath(), "QuantroLean.NinjaHost.SmokeTest");
          if (Directory.Exists(results)) Directory.Delete(results, recursive: true);
          Directory.CreateDirectory(results);
 

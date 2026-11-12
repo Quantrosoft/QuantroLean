@@ -30,10 +30,10 @@ using QuantConnect.Data.Market;
 using QuantConnect.Orders;
 using QuantConnect.Securities;
 
-namespace MyLean.NinjaHost
+namespace QuantroLean.NinjaHost
 {
    /// <summary>Lean algorithm that runs one NinjaTrader 8 strategy on Lean's tick data. The strategy's NinjaScript
-   /// source is compiled into the same assembly as MyLean.NinjaShim and this host (see src/NinjaHost/NinjaHost.props).
+   /// source is compiled into the same assembly as QuantroLean.NinjaShim and this host (see src/NinjaHost/NinjaHost.props).
    ///
    /// Parameters (config.json "parameters"):
    ///   strategy           class name of the NinjaScript strategy

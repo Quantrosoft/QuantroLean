@@ -25,7 +25,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Threading;
-using MyLean.Brokerages.NinjaTrader8;   // GatewayClient (internal, compiled into this assembly)
+using QuantroLean.Brokerages.NinjaTrader8;   // GatewayClient (internal, compiled into this assembly)
 
 // Integration test for the NinjaTrader 8 brokerage client against a running gateway companion.
 // It drives the shipped GatewayClient through the whole contract against a chosen connection and account

@@ -43,7 +43,7 @@ using QuantConnect.Packets;
 using QuantConnect.Securities;
 using QuantConnect.Util;
 
-namespace MyLean.Brokerages.NinjaTrader8
+namespace QuantroLean.Brokerages.NinjaTrader8
 {
     /// <summary>
     /// Lean brokerage and live data source for NinjaTrader 8. It starts the NinjaTrader 8 gateway companion process
@@ -225,7 +225,7 @@ namespace MyLean.Brokerages.NinjaTrader8
                     + "this brokerage needs a gateway that speaks protocol " + SupportedGatewayProtocol);
             if (protocol == SupportedGatewayProtocol) return;
             string direction = protocol > SupportedGatewayProtocol
-                ? "the gateway is newer than this brokerage - update the MyLean NinjaTrader 8 brokerage to the release that matches gateway protocol " + protocol
+                ? "the gateway is newer than this brokerage - update the QuantroLean NinjaTrader 8 brokerage to the release that matches gateway protocol " + protocol
                 : "the gateway is older than this brokerage - update the NinjaTrader 8 gateway to the release that speaks protocol " + SupportedGatewayProtocol;
             throw new InvalidOperationException("NinjaTrader 8 gateway protocol mismatch: the gateway speaks protocol " + protocol
                 + ", this brokerage is built for protocol " + SupportedGatewayProtocol + " - " + direction);

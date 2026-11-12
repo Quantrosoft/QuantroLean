@@ -21,13 +21,13 @@ SOFTWARE.
 */
 
 using System;
-using MyLean.NinjaShim;
-using MyLean.NinjaShim.Hosting;
+using QuantroLean.NinjaShim;
+using QuantroLean.NinjaShim.Hosting;
 using QuantConnect;
 using QuantConnect.Algorithm;
 using QuantConnect.Orders;
 
-namespace MyLean.NinjaHost
+namespace QuantroLean.NinjaHost
 {
    /// <summary>Mirrors the hosted strategy's orders as Lean market orders. The shim decides every fill by
    /// NinjaTrader's rules (stop loss and profit target included, checked tick by tick) and hands the resulting

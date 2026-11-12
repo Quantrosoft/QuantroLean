@@ -23,7 +23,7 @@ SOFTWARE.
 using System;
 using NinjaTrader.NinjaScript;
 
-namespace MyLean.NinjaShim.Hosting
+namespace QuantroLean.NinjaShim.Hosting
 {
    public static class ShimFillBridge
    {

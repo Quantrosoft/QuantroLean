@@ -20,7 +20,7 @@ The column is taken by `--profit-column`, or auto-detected as the first of `prof
 `profit_loss`, `profitloss`. A file without a header is read as one profit per line. The profits are the real run's,
 in trade order (the order matters for drawdown).
 
-To get such a file from a MyLean backtest, export the closed trades' profit-and-loss from Lean's result, or, for a
+To get such a file from a QuantroLean backtest, export the closed trades' profit-and-loss from Lean's result, or, for a
 NinjaShim run, take the host's `<strategy>-<symbol>-trades.csv` and convert its points to money with the instrument's
 point value.
 

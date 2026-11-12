@@ -25,7 +25,7 @@ using NinjaTrader.Data;
 using NinjaTrader.NinjaScript;
 using NinjaTrader.NinjaScript.Indicators;   // Series<T>
 
-namespace MyLean.NinjaShim
+namespace QuantroLean.NinjaShim
 {
    public sealed class BarStream
    {

@@ -26,7 +26,7 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace MyLean.Tools.SampleData
+namespace QuantroLean.Tools.SampleData
 {
    /// <summary>Puts the Lean sample data the examples of this repository run on into a Lean data folder. The data is
    /// not part of the repository; this tool takes it from Lean, bit-exact: every file is checked against its size and

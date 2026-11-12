@@ -31,9 +31,9 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <RootNamespace>MyLean.Brokerages.NinjaTrader8</RootNamespace>
+    <RootNamespace>QuantroLean.Brokerages.NinjaTrader8</RootNamespace>
     <AssemblyName>QuantConnect.Brokerages.NinjaTrader8</AssemblyName>
-    <Description>MyLean: NinjaTrader 8 brokerage and live data for Lean</Description>
+    <Description>QuantroLean: NinjaTrader 8 brokerage and live data for Lean</Description>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="QuantConnect.Brokerages" />

@@ -24,6 +24,6 @@
   <!--
     Repository-wide MSBuild properties. The Dukascopy data source used to be an optional external DLL referenced
     from here; it is now a project of this repository (src/DataSources/Dukascopy), referenced directly by
-    MyLauncher and MyDownloader, so nothing needs to be configured here for it.
+    QuantroLeanLauncher and QuantroLeanDownloader, so nothing needs to be configured here for it.
   -->
 </Project>

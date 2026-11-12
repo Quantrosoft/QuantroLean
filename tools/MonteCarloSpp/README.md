@@ -1,7 +1,7 @@
 # MonteCarloSpp
 
 The **synthetic price path** Monte Carlo: it resamples the bar returns of a backtest's price series into synthetic
-price series, writes each one as Lean data, and **re-runs the whole MyLean backtest on it**, then analyses the
+price series, writes each one as Lean data, and **re-runs the whole QuantroLean backtest on it**, then analyses the
 distribution of the result metrics with the same statistics and risk measures as the trade-resampling
 [`../MonteCarlo`](../MonteCarlo/README.md). Because every path is a full backtest, this is much slower than
 resampling the trades &mdash; use a modest iteration count.
@@ -16,7 +16,7 @@ written from its textbook definition; no code is taken from any other tool.
 3. Rebuild a synthetic mid-close path from the resampled returns (same first price) and translate each original
    bar's bid and ask to the synthetic mid, keeping the spread and the intrabar shape.
 4. Write the synthetic bars as Lean data (Lean's own `LeanDataWriter`) into a copy of the data folder, and run
-   `MyLauncher` on it.
+   `QuantroLeanLauncher` on it.
 5. Read each run's closed-trade profits, compute the metrics, and summarize the distribution and the risk measures.
 
 The real run (the backtest on the original prices) is reported alongside, with its backtesting percentile.
@@ -24,8 +24,8 @@ The real run (the backtest on the original prices) is reported alongside, with i
 ## Usage
 
     cd tools/MonteCarloSpp/bin/Debug
-    MonteCarloSpp --data-folder <MyLean>/data \
-                  --launcher <MyLean>/src/Lean/MyLauncher/bin/Debug/MyLauncher.exe \
+    MonteCarloSpp --data-folder <QuantroLean>/data \
+                  --launcher <QuantroLean>/src/Lean/QuantroLeanLauncher/bin/Debug/QuantroLeanLauncher.exe \
                   --start-date 20240102 --end-date 20240103 \
                   --algorithm-type-name DukascopyExampleAlgorithm --symbol EUR_USD --market dukascopy \
                   --method block --iterations 200 --seed 42 --html
@@ -43,7 +43,7 @@ identical files.
 
 ## Notes
 
-- Works on minute quote data (forex / CFDs), for example the Dukascopy EUR_USD data downloaded with `MyDownloader`.
+- Works on minute quote data (forex / CFDs), for example the Dukascopy EUR_USD data downloaded with `QuantroLeanDownloader`.
 - Equity confidence bands over the trade index are not produced here (synthetic runs have different trade counts);
   the metric distributions and the risk measures are.
 - Drawdown is the equity drawdown, built from the trades of each re-run, per the house rule.

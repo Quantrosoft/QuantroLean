@@ -22,7 +22,7 @@ SOFTWARE.
 
 using System;
 
-namespace MyLean.NinjaShim.Hosting
+namespace QuantroLean.NinjaShim.Hosting
 {
    /// <summary>Parsed order tag: entry vs exit + the associated signals.</summary>
    public sealed class ShimOrderTag

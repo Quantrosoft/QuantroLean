@@ -11,12 +11,12 @@ Copyright (c) Quantrosoft Pte. Ltd. All rights reserved.
 
 These binaries are PROPRIETARY software. They are NOT open source and are NOT
 covered by the MIT or Apache License 2.0 that applies to the source code of this
-repository (see the top-level LICENSE.txt). They are bundled with MyLean only as
+repository (see the top-level LICENSE.txt). They are bundled with QuantroLean only as
 a convenience, so that a fresh clone builds and can connect to NinjaTrader 8 out
 of the box.
 
 Permitted:
-    Using these binaries, unmodified, together with MyLean, to connect to
+    Using these binaries, unmodified, together with QuantroLean, to connect to
     NinjaTrader 8. Their use is subject to Quantrosoft's own licence terms.
 
 Not permitted without the prior written permission of Quantrosoft Pte. Ltd.:

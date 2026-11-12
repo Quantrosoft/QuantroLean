@@ -1,9 +1,9 @@
-# MyLean — notes for an AI assistant
+# QuantroLean — notes for an AI assistant
 
 You are helping someone use this repository. `README.md` is the full guide (layout, build, run, every feature). This
 file says what the repository can do and how to drive it without breaking anything. Read both before the first build.
 
-MyLean is a set of projects on top of [QuantConnect Lean](https://github.com/QuantConnect/Lean), the open-source
+QuantroLean is a set of projects on top of [QuantConnect Lean](https://github.com/QuantConnect/Lean), the open-source
 algorithmic trading engine. Lean is consumed as the official `QuantConnect.*` NuGet packages; this repository holds the
 launchers, example algorithms, a data folder and extensions.
 
@@ -19,7 +19,7 @@ See the feature table in `README.md`. In short:
 
 - **Lean as the official NuGet packages**, one version for all of them (`Directory.Packages.props`), with the launcher,
   optimizer and downloader as projects of this solution.
-- **Example algorithms** in C# (`src/Algorithms/MyAlgo.CSharp`) and Python (`src/Algorithms/MyAlgo.Python`).
+- **Example algorithms** in C# (`src/Algorithms/QuantroLeanAlgo.CSharp`) and Python (`src/Algorithms/QuantroLeanAlgo.Python`).
 - **Run NinjaTrader 8 strategy source unchanged on Lean** (the NinjaShim): backtest a NinjaScript strategy on Lean's
   tick data, with tick-exact equity-drawdown measurement. Needs a local NinjaTrader 8 for its stock indicators and
   bars types.
@@ -36,11 +36,11 @@ See the feature table in `README.md`. In short:
 
 Requires the .NET 10 SDK.
 
-    dotnet build MyLean.sln
+    dotnet build QuantroLean.sln
 
 With NinjaTrader 8 installed (Windows only):
 
-    dotnet build MyLean.NinjaTrader.sln
+    dotnet build QuantroLean.NinjaTrader.sln
 
 ## Sample data
 
@@ -54,8 +54,8 @@ stops it. Market data (ticks, bars, factor files) is never committed.
 
 Each tool reads `config.json` from the current directory, so run the tool from its output folder.
 
-    cd src/Lean/MyLauncher/bin/Debug
-    MyLauncher
+    cd src/Lean/QuantroLeanLauncher/bin/Debug
+    QuantroLeanLauncher
 
 The default configuration backtests the example `SmaCrossoverAlgorithm` on the SPY minute sample data. Command-line
 options override the configuration, for example `--algorithm-type-name`, `--algorithm-location` and `--data-folder`.
@@ -63,15 +63,15 @@ Python algorithms need Lean's Python runtime (see `README.md`).
 
 ## Optimize
 
-    cd src/Lean/MyOptimizer/bin/Debug
+    cd src/Lean/QuantroLeanOptimizer/bin/Debug
     QuantConnect.Optimizer.Launcher
 
-The optimizer's `config.json` searches the example's parameters; each backtest runs as a separate `MyLauncher` process.
+The optimizer's `config.json` searches the example's parameters; each backtest runs as a separate `QuantroLeanLauncher` process.
 
 ## Download historical data
 
-    cd src/Lean/MyDownloader/bin/Debug
-    MyDownloader --tickers <SYMBOLS> --data-downloader <NAME> --data-type Quote --security-type <TYPE> \
+    cd src/Lean/QuantroLeanDownloader/bin/Debug
+    QuantroLeanDownloader --tickers <SYMBOLS> --data-downloader <NAME> --data-type Quote --security-type <TYPE> \
                  --market <MARKET> --resolution Tick --start-date YYYYMMDD --end-date YYYYMMDD
 
 Downloaded ticks are written to the data folder and also aggregated to minute, hour and daily quote bars, with UTC as
@@ -82,9 +82,9 @@ the data and exchange time zone. For the free Dukascopy source see the next sect
 A NinjaScript strategy (a `NinjaTrader.NinjaScript.Strategies.Strategy` subclass, written for NinjaTrader 8) is compiled
 unchanged together with the shim and the Lean host into one algorithm assembly and run by Lean as `NinjaScriptAlgorithm`:
 
-    dotnet build MyLean.NinjaTrader.sln
-    cd src/Lean/MyLauncher.NinjaTrader/bin/Debug
-    MyLauncher.NinjaTrader
+    dotnet build QuantroLean.NinjaTrader.sln
+    cd src/Lean/QuantroLeanLauncher.NinjaTrader/bin/Debug
+    QuantroLeanLauncher.NinjaTrader
 
 What it does and does not do:
 
@@ -119,10 +119,10 @@ futures contract's live ticks to the console (parameter `nt8-contract`, e.g. `MN
 
 The data source `QuantConnect.DataSource.Dukascopy` (`src/DataSources/Dukascopy`) downloads free historical tick
 data for forex and CFDs from Dukascopy's public feed. It is part of this repository and is referenced by
-`MyLauncher` and `MyDownloader`, so a clone can download Dukascopy data out of the box. Run a download through
-`MyDownloader`:
+`QuantroLeanLauncher` and `QuantroLeanDownloader`, so a clone can download Dukascopy data out of the box. Run a download through
+`QuantroLeanDownloader`:
 
-    MyDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
+    QuantroLeanDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
                  --security-type Cfd --market dukascopy --resolution Tick --start-date 20240102 --end-date 20240103
 
 Notes:
@@ -141,7 +141,7 @@ Notes:
 bootstrap) and reports the distribution of net profit, equity drawdown, profit factor, Sharpe ratio and final
 equity (mean/median/min/max/P5/P95, histograms, the real run's percentile) with the risk measures P(profitable),
 risk of ruin, value at risk, conditional VaR and equity confidence bands. Input is a CSV of closed-trade profits,
-for example the closed trades of a MyLean backtest result (`totalPerformance.closedTrades[].profitLoss`). Output is
+for example the closed trades of a QuantroLean backtest result (`totalPerformance.closedTrades[].profitLoss`). Output is
 CSV / JSON / optional HTML; the same seed gives an identical result. `tools/MonteCarloSpp` is the synthetic price
 path method: it resamples the backtest's bar returns, writes synthetic Lean data and re-runs the whole backtest on
 each path (so it is much slower). Drawdown always means the equity drawdown, built from the trades, not from daily
@@ -161,7 +161,7 @@ returns. Both tools are an independent implementation from the methods' textbook
 1. Never commit market data; it is fetched and git-ignores it.
 2. Keep the code, the comments, `README.md` and this file in sync — after any change, no stale names or paths remain.
 3. Build before you say it is done. For the NinjaShim, the smoke test's exit code 0 is the pass.
-4. The NinjaTrader bars types and the live brokerage need a local NinjaTrader 8; without it, build `MyLean.sln` only.
+4. The NinjaTrader bars types and the live brokerage need a local NinjaTrader 8; without it, build `QuantroLean.sln` only.
 
 ## License
 

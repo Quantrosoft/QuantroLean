@@ -25,9 +25,9 @@ Independent implementation.
 using System.Diagnostics;
 using System.Text.Json;
 
-namespace MyLean.MonteCarlo.Spp;
+namespace QuantroLean.MonteCarlo.Spp;
 
-/// <summary>Runs a MyLean backtest and reads back the closed-trade profits.</summary>
+/// <summary>Runs a QuantroLean backtest and reads back the closed-trade profits.</summary>
 public sealed class BacktestRunner
 {
     private readonly string _launcherExe;

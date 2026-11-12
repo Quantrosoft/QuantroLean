@@ -24,8 +24,8 @@ price series, re-run the whole backtest on it, and analyse the distribution of t
 */
 
 using System.Globalization;
-using MyLean.MonteCarlo;
-using MyLean.MonteCarlo.Spp;
+using QuantroLean.MonteCarlo;
+using QuantroLean.MonteCarlo.Spp;
 using QuantConnect;
 
 internal static class Program
@@ -103,7 +103,7 @@ internal static class Program
                 $"method={o.GetValueOrDefault("method", "block")} iterations={settings.Iterations} seed={settings.Seed} blockSize={blockSize}");
 
             // Working folders: one overlay data folder (a copy of the real one) and one results folder, both reused.
-            var workDir = o.GetValueOrDefault("work-dir", Path.Combine(Path.GetTempPath(), "MyLean.MonteCarloSpp"));
+            var workDir = o.GetValueOrDefault("work-dir", Path.Combine(Path.GetTempPath(), "QuantroLean.MonteCarloSpp"));
             var overlay = Path.Combine(workDir, "data");
             var resultsDir = Path.Combine(workDir, "res");
             if (Directory.Exists(workDir)) Directory.Delete(workDir, recursive: true);
@@ -240,18 +240,18 @@ internal static class Program
     private static void PrintUsage()
     {
         Console.WriteLine(
-@"MyLean Monte Carlo - Synthetic Price Path.
+@"QuantroLean Monte Carlo - Synthetic Price Path.
 
 Resamples the bar returns of a backtest's price series into synthetic price paths, writes each as Lean data, and
 re-runs the whole backtest on it, then analyses the distribution of the result metrics (the same statistics and
 risk measures as the trade-resampling MonteCarlo tool). Deterministic for a given seed.
 
 Usage:
-  MonteCarloSpp --data-folder <dir> --launcher <MyLauncher.exe> --start-date YYYYMMDD --end-date YYYYMMDD [options]
+  MonteCarloSpp --data-folder <dir> --launcher <QuantroLeanLauncher.exe> --start-date YYYYMMDD --end-date YYYYMMDD [options]
 
 Required:
   --data-folder <dir>         the Lean data folder that holds the base minute quote data
-  --launcher <path>           path to MyLauncher.exe (its folder must hold the algorithm assembly and config.json)
+  --launcher <path>           path to QuantroLeanLauncher.exe (its folder must hold the algorithm assembly and config.json)
   --start-date / --end-date   the day range to synthesize (minute quote data must exist; end is exclusive)
 
 Options:

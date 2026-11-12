@@ -22,7 +22,7 @@ SOFTWARE.
 
 using System;
 
-namespace MyLean.NinjaShim.Hosting
+namespace QuantroLean.NinjaShim.Hosting
 {
    public sealed class ShimInstrumentSpec
    {

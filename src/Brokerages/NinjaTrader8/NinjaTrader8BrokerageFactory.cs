@@ -30,7 +30,7 @@ using QuantConnect.Packets;
 using QuantConnect.Securities;
 using QuantConnect.Util;
 
-namespace MyLean.Brokerages.NinjaTrader8
+namespace QuantroLean.Brokerages.NinjaTrader8
 {
     /// <summary>
     /// Creates the NinjaTrader 8 brokerage. Configuration (config.json or the job's brokerage data):

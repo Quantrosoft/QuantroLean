@@ -26,7 +26,7 @@ using NinjaTrader.Cbi;
 using NinjaTrader.Data;
 using NinjaTrader.NinjaScript;
 
-namespace MyLean.NinjaShim
+namespace QuantroLean.NinjaShim
 {
    /// <summary>
    /// A simple tick record fed into ShimRuntime.PumpTick().
@@ -352,7 +352,7 @@ namespace MyLean.NinjaShim
          _ledgerExecSeq++;
          try
          {
-            MyLean.NinjaShim.Hosting.ShimFillBridge.RaiseFill(strat,
+            QuantroLean.NinjaShim.Hosting.ShimFillBridge.RaiseFill(strat,
                isEntry: isEntry, signal: signal, fromSignal: fromSignal, exitSignal: exitSignal,
                isLong: isLong, qty: qty, price: price, timeUtc: tsUtc,
                orderId: "ledger_" + _ledgerExecSeq.ToString(System.Globalization.CultureInfo.InvariantCulture),

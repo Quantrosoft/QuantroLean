@@ -23,7 +23,7 @@ Independent implementation.
 */
 
 using System.Globalization;
-using MyLean.MonteCarlo;
+using QuantroLean.MonteCarlo;
 
 internal static class Program
 {
@@ -137,7 +137,7 @@ internal static class Program
     private static void PrintUsage()
     {
         Console.WriteLine(
-@"MyLean Monte Carlo - resamples a strategy's closed-trade profits.
+@"QuantroLean Monte Carlo - resamples a strategy's closed-trade profits.
 
 Usage:
   MonteCarlo --trades <file.csv> [options]

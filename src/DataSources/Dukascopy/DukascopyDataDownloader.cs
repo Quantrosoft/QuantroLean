@@ -95,7 +95,7 @@ namespace QuantConnect.Lean.DataSource.Dukascopy
             var symbol = parameters.Symbol;
 
             // Dukascopy delivers tick-level bid/ask quotes. Higher resolutions are built from these ticks by the
-            // caller (MyDownloader aggregates to minute, hour and daily), so only tick/quote requests are served here.
+            // caller (QuantroLeanDownloader aggregates to minute, hour and daily), so only tick/quote requests are served here.
             if (parameters.Resolution != Resolution.Tick || parameters.TickType != TickType.Quote)
             {
                 Log.Trace($"DukascopyDataDownloader.Get(): only Tick/Quote is supported; " +

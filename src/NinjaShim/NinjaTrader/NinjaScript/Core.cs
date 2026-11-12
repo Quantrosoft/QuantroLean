@@ -49,7 +49,7 @@ namespace NinjaTrader.NinjaScript
    public abstract partial class NinjaScriptBase
    {
       // Wired by ShimRuntime when the strategy is hosted.
-      internal MyLean.NinjaShim.ShimRuntime _runtime;
+      internal QuantroLean.NinjaShim.ShimRuntime _runtime;
 
       // ---- Lifecycle -------------------------------------------------------
       public State State { get; internal set; } = State.SetDefaults;

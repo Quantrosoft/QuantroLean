@@ -25,7 +25,7 @@ Independent implementation.
 using System.Globalization;
 using System.Text;
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>
 /// Writes a Monte Carlo result as a per-simulation CSV, a summary JSON, an optional HTML page, and a console
@@ -171,7 +171,7 @@ public static class Report
         var sb = new StringBuilder();
         sb.Append("<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\">\n");
         sb.Append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
-        sb.Append("<title>MyLean Monte Carlo</title>\n<style>\n");
+        sb.Append("<title>QuantroLean Monte Carlo</title>\n<style>\n");
         sb.Append("body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:#0f1420;color:#e6e6e6;margin:0;padding:24px;line-height:1.45}\n");
         sb.Append("h1{font-size:20px;margin:0 0 4px}.sub{color:#9fb0d0;font-size:13px;margin-bottom:18px}\n");
         sb.Append("table{border-collapse:collapse;width:100%;font-size:13px;margin-bottom:22px}\n");
@@ -180,7 +180,7 @@ public static class Report
         sb.Append("svg{background:#141b2b;border:1px solid #2a3350;border-radius:8px}\n");
         sb.Append(".bar{fill:#7aa2ff}.real{stroke:#f7c948;stroke-width:2}\n");
         sb.Append("</style></head><body>\n");
-        sb.Append("<h1>MyLean Monte Carlo</h1>\n");
+        sb.Append("<h1>QuantroLean Monte Carlo</h1>\n");
         sb.Append("<div class=\"sub\">method <b>").Append(MethodName(s.Method)).Append("</b> &middot; ")
           .Append(s.Iterations).Append(" iterations &middot; seed ").Append(s.Seed)
           .Append(" &middot; block size ").Append(r.EffectiveBlockSize)

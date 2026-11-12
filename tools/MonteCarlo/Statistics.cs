@@ -22,7 +22,7 @@ SOFTWARE.
 Independent implementation. The statistics are computed from their textbook definitions.
 */
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>Summary statistics of one metric's distribution over all simulations.</summary>
 public sealed class MetricDistribution

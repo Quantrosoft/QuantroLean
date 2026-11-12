@@ -23,7 +23,7 @@ Independent implementation. The risk measures (probability of profit, risk of ru
 conditional value at risk, equity confidence bands) follow their textbook definitions.
 */
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>The settings of a Monte Carlo run.</summary>
 public sealed class MonteCarloSettings

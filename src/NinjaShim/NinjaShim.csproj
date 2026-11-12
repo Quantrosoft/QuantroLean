@@ -25,14 +25,14 @@
     Compile check of the NinjaShim on its own (with NinjaTrader's stock sources of the local installation).
     NOT what algorithms consume: a NinjaScript strategy's source has to be compiled into the SAME assembly as the shim
     (NinjaScript's partial classes only merge within one assembly), so algorithm projects include these sources by
-    glob - see src/Algorithms/MyAlgo.NinjaScript.
+    glob - see src/Algorithms/QuantroLeanAlgo.NinjaScript.
     NinjaScript code uses WPF types (System.Windows.Media.Brush...), hence net10.0-windows + UseWPF.
   -->
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>MyLean.NinjaShim</AssemblyName>
-    <RootNamespace>MyLean.NinjaShim</RootNamespace>
+    <AssemblyName>QuantroLean.NinjaShim</AssemblyName>
+    <RootNamespace>QuantroLean.NinjaShim</RootNamespace>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <LangVersion>latest</LangVersion>

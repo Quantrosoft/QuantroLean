@@ -2,7 +2,7 @@
 
 A free historical data source for Lean: `DukascopyDataDownloader` implements Lean's `IDataDownloader` and fetches
 tick data for forex and CFDs from [Dukascopy](https://www.dukascopy.com)'s public data feed. It is part of this
-repository; `MyLauncher` and `MyDownloader` reference it, so a clone can download Dukascopy data out of the box.
+repository; `QuantroLeanLauncher` and `QuantroLeanDownloader` reference it, so a clone can download Dukascopy data out of the box.
 
 Independent implementation: the downloader is written from Dukascopy's public `.bi5` feed format; no code is taken
 from any third party. The files under `Lzma/` are the public-domain LZMA SDK by Igor Pavlov (see
@@ -20,10 +20,10 @@ existed) are absent on the feed and skipped; a corrupt file stops the run rather
 
 ## Use
 
-Lean resolves the downloader by type name, so `MyDownloader` drives it with `--data-downloader
+Lean resolves the downloader by type name, so `QuantroLeanDownloader` drives it with `--data-downloader
 DukascopyDataDownloader` (see the repository README, "Dukascopy"):
 
-    MyDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
+    QuantroLeanDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
                  --security-type Cfd --market dukascopy --resolution Tick --start-date 20240102 --end-date 20240103
 
 The feed throttles heavy use, so large ranges are slow; the downloader paces its requests and retries transient

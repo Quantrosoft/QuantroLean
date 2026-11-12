@@ -24,7 +24,7 @@ using System;
 using System.Collections.Generic;
 using NinjaTrader.NinjaScript;
 
-namespace MyLean.NinjaShim.Hosting
+namespace QuantroLean.NinjaShim.Hosting
 {
    public static class ShimParamOverrides
    {

@@ -22,7 +22,7 @@ SOFTWARE.
 
 using System;
 using NinjaTrader.Data;
-using MyLean.NinjaShim;
+using QuantroLean.NinjaShim;
 
 // Unit test for the forming bar on a time-based series (ShimRuntime [TIME-SECONDARY-FORMING]).
 // A time BarStream with EmulateFormingBar opens the next bar's forming slot BEFORE the bar-close

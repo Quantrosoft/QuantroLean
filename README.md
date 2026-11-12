@@ -1,4 +1,4 @@
-# MyLean
+# QuantroLean
 
 Projects on top of [QuantConnect Lean](https://github.com/QuantConnect/Lean), the open-source algorithmic trading
 engine. Lean is consumed as the official `QuantConnect.*` NuGet packages; this repository holds the launchers,
@@ -27,15 +27,15 @@ example algorithms, a data folder and extensions.
 |---|---|
 | `Directory.Packages.props` | package versions; all `QuantConnect.*` packages share one Lean version |
 | `Directory.Build.props` | repository-wide MSBuild properties |
-| `MyLean.sln` | everything that builds without NinjaTrader |
-| `MyLean.NinjaTrader.sln` | the NinjaScript projects; needs NinjaTrader 8 on the PC |
-| `src/Lean/MyLauncher` | Lean's `Launcher`: backtesting and live trading (`Program.cs` unchanged) |
-| `src/Lean/MyLauncher.NinjaTrader` | the same launcher on the Windows desktop runtime, for NinjaScript algorithms |
-| `src/Lean/MyOptimizer` | Lean's `Optimizer.Launcher` (unchanged); runs every backtest as a MyLauncher process |
-| `src/Lean/MyDownloader` | Lean's `DownloaderDataProvider`; downloaded ticks are also aggregated to minute, hour and daily quote bars |
-| `src/Algorithms/MyAlgo.CSharp` | C# algorithms (assembly `MyAlgo.CSharp.dll`) |
-| `src/Algorithms/MyAlgo.Python` | Python algorithms |
-| `src/Algorithms/MyAlgo.NinjaScript` | NinjaScript strategies, compiled with the NinjaShim and the Lean host |
+| `QuantroLean.sln` | everything that builds without NinjaTrader |
+| `QuantroLean.NinjaTrader.sln` | the NinjaScript projects; needs NinjaTrader 8 on the PC |
+| `src/Lean/QuantroLeanLauncher` | Lean's `Launcher`: backtesting and live trading (`Program.cs` unchanged) |
+| `src/Lean/QuantroLeanLauncher.NinjaTrader` | the same launcher on the Windows desktop runtime, for NinjaScript algorithms |
+| `src/Lean/QuantroLeanOptimizer` | Lean's `Optimizer.Launcher` (unchanged); runs every backtest as a QuantroLeanLauncher process |
+| `src/Lean/QuantroLeanDownloader` | Lean's `DownloaderDataProvider`; downloaded ticks are also aggregated to minute, hour and daily quote bars |
+| `src/Algorithms/QuantroLeanAlgo.CSharp` | C# algorithms (assembly `QuantroLeanAlgo.CSharp.dll`) |
+| `src/Algorithms/QuantroLeanAlgo.Python` | Python algorithms |
+| `src/Algorithms/QuantroLeanAlgo.NinjaScript` | NinjaScript strategies, compiled with the NinjaShim and the Lean host |
 | `src/NinjaShim` | NinjaScript compatibility layer: NinjaTrader 8's strategy API, run by a host on any engine |
 | `src/NinjaHost` | the Lean host of the NinjaShim (`NinjaScriptAlgorithm`) |
 | `src/Brokerages/NinjaTrader8` | Lean brokerage and live data source for NinjaTrader 8 (futures), through a companion gateway process |
@@ -52,11 +52,11 @@ example algorithms, a data folder and extensions.
 
 Requires the .NET 10 SDK.
 
-    dotnet build MyLean.sln
+    dotnet build QuantroLean.sln
 
 With NinjaTrader 8 installed (Windows):
 
-    dotnet build MyLean.NinjaTrader.sln
+    dotnet build QuantroLean.NinjaTrader.sln
 
 `docs/TESTING.md` lists commands and the expected results to verify every feature on a clean checkout.
 
@@ -76,8 +76,8 @@ the relative paths in it are relative to that folder, so run the tools from ther
 
 Backtest:
 
-    cd src/Lean/MyLauncher/bin/Debug
-    MyLauncher
+    cd src/Lean/QuantroLeanLauncher/bin/Debug
+    QuantroLeanLauncher
 
 The default configuration backtests the example `SmaCrossoverAlgorithm` on the SPY minute sample data
 (2013-10-07 to 2013-10-11). Command line options override the configuration, for example
@@ -89,7 +89,7 @@ Lean's [Algorithm.Python/readme.md](https://github.com/QuantConnect/Lean/blob/ma
 
 Optimization:
 
-    cd src/Lean/MyOptimizer/bin/Debug
+    cd src/Lean/QuantroLeanOptimizer/bin/Debug
     QuantConnect.Optimizer.Launcher
 
 The optimizer's `config.json` searches the example's parameters `fast-period` and `slow-period`. The optimizer
@@ -100,12 +100,12 @@ from `QuantConnect.*.dll` files.
 
 A NinjaScript strategy (a `NinjaTrader.NinjaScript.Strategies.Strategy` subclass, as written for NinjaTrader 8) is
 compiled unchanged together with the NinjaShim and the Lean host into one algorithm assembly
-(`src/Algorithms/MyAlgo.NinjaScript`). Lean runs it as the algorithm `NinjaScriptAlgorithm`:
+(`src/Algorithms/QuantroLeanAlgo.NinjaScript`). Lean runs it as the algorithm `NinjaScriptAlgorithm`:
 
     dotnet run --project tools/SampleData -- --to data --from <Lean clone>/Data
-    dotnet build MyLean.NinjaTrader.sln
-    cd src/Lean/MyLauncher.NinjaTrader/bin/Debug
-    MyLauncher.NinjaTrader
+    dotnet build QuantroLean.NinjaTrader.sln
+    cd src/Lean/QuantroLeanLauncher.NinjaTrader/bin/Debug
+    QuantroLeanLauncher.NinjaTrader
 
 The configuration runs the example `SmaCrossoverStrategy` on SPY's ticks of 2013-10-07. Its parameters
 (`config.json`, `"parameters"`) are described in `src/NinjaHost/NinjaScriptAlgorithm.cs`: the strategy class, the
@@ -179,9 +179,9 @@ actually changed.
 Run it live with the `live-ninjatrader8` environment (the bundled gateway is the default; set the Demo/Sim
 `ninjatrader8-connection` / `ninjatrader8-account` in `config.json`, or leave them empty to pick from a dropdown):
 
-    MyLauncher --environment live-ninjatrader8 --algorithm-type-name NinjaTrader8LiveTicksAlgorithm
+    QuantroLeanLauncher --environment live-ninjatrader8 --algorithm-type-name NinjaTrader8LiveTicksAlgorithm
 
-`NinjaTrader8LiveTicksAlgorithm` (`src/Algorithms/MyAlgo.CSharp`) is a read-only example: it streams the live ticks of
+`NinjaTrader8LiveTicksAlgorithm` (`src/Algorithms/QuantroLeanAlgo.CSharp`) is a read-only example: it streams the live ticks of
 one futures contract (parameter `nt8-contract`, a NinjaTrader name like `MNQ 12-26`) to the console and places no
 orders.
 
@@ -195,13 +195,13 @@ ticks, factor files) comes from `tools/SampleData` or the downloader and is igno
 ## Dukascopy
 
 Free historical tick data for forex and CFDs from Dukascopy's public feed. The data source is a project of this
-repository, `src/DataSources/Dukascopy` (assembly `QuantConnect.DataSource.Dukascopy`), referenced by `MyLauncher`
-and `MyDownloader`, so a clone can download Dukascopy data out of the box. It has no runtime NuGet dependency of its
+repository, `src/DataSources/Dukascopy` (assembly `QuantConnect.DataSource.Dukascopy`), referenced by `QuantroLeanLauncher`
+and `QuantroLeanDownloader`, so a clone can download Dukascopy data out of the box. It has no runtime NuGet dependency of its
 own: the LZMA decoder it needs is the public-domain LZMA SDK, compiled in (`src/DataSources/Dukascopy/Lzma`).
 
-Download (see also `src/Lean/MyDownloader/Load.bat`), from the downloader's output folder:
+Download (see also `src/Lean/QuantroLeanDownloader/Load.bat`), from the downloader's output folder:
 
-    MyDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
+    QuantroLeanDownloader --tickers EUR_USD --data-downloader DukascopyDataDownloader --data-type Quote \
                  --security-type Cfd --market dukascopy --resolution Tick --start-date 20240102 --end-date 20240103
 
 The ticks are written and also aggregated to minute, hour and daily quote bars, with UTC as the data and exchange
@@ -209,7 +209,7 @@ time zone. Symbols use Lean's Dukascopy names (`EUR_USD`, `XAU_USD`, `DEU.IDX_EU
 `dukascopy` market in `data/symbol-properties/symbol-properties-database.csv`. The Dukascopy instrument code and the
 price scale come from that file, so there is no hard-coded table. The feed throttles heavy use, so large ranges are
 slow; the downloader paces its requests and retries transient throttling patiently. `DukascopyExampleAlgorithm`
-(`src/Algorithms/MyAlgo.CSharp`) backtests a moving-average crossover on the EUR_USD CFD using this data.
+(`src/Algorithms/QuantroLeanAlgo.CSharp`) backtests a moving-average crossover on the EUR_USD CFD using this data.
 
 ## Monte Carlo
 
@@ -218,12 +218,12 @@ and what the downside looks like. Methods: reshuffle, i.i.d. bootstrap, circular
 bootstrap. Per-metric distributions (net profit, equity drawdown, profit factor, Sharpe ratio, final equity) with
 mean/median/min/max/P5/P95 and a histogram, plus the backtesting percentile of the real run; risk measures
 P(profitable), risk of ruin, value at risk, conditional VaR and equity confidence bands. Input is a CSV of
-closed-trade profits (for example the closed trades of a MyLean backtest result). Output is CSV, JSON and an optional
+closed-trade profits (for example the closed trades of a QuantroLean backtest result). Output is CSV, JSON and an optional
 HTML page; it is deterministic for a given seed. See `tools/MonteCarlo/README.md`.
 
 `tools/MonteCarloSpp` is the synthetic price path method: it resamples the backtest's bar returns into synthetic
 price series, writes each as Lean data and re-runs the whole backtest on it, then analyses the distribution of the
-result metrics with the same statistics. It drives `MyLauncher`, so it is much slower than the trade resampling.
+result metrics with the same statistics. It drives `QuantroLeanLauncher`, so it is much slower than the trade resampling.
 See `tools/MonteCarloSpp/README.md`.
 
 Drawdown always means the equity drawdown, built from the trade profits (or the host's tick-exact equity), not from
@@ -248,13 +248,13 @@ Files copied from Lean and changed here say so in their header (Apache License 2
 
 | File | Change |
 |---|---|
-| `src/Lean/MyDownloader/Program.cs` | ticks are also aggregated to minute, hour and daily quote bars; data is written with UTC as data and exchange time zone |
-| `src/Lean/MyDownloader/Models/BrokerageDataDownloader.cs` | the live node packet carries only the brokerage name and the deployment target |
-| `src/Lean/MyLauncher/config.json`, `src/Lean/MyLauncher.NinjaTrader/config.json` | algorithm selection, parameters and data folder |
-| `src/Algorithms/MyAlgo.Python/AlgorithmImports.py` | the imports of `QuantConnect.Research`, `QuantConnect.Securities.IndexOption` and `QuantConnect.Indicators.CandlestickPatterns` are removed |
+| `src/Lean/QuantroLeanDownloader/Program.cs` | ticks are also aggregated to minute, hour and daily quote bars; data is written with UTC as data and exchange time zone |
+| `src/Lean/QuantroLeanDownloader/Models/BrokerageDataDownloader.cs` | the live node packet carries only the brokerage name and the deployment target |
+| `src/Lean/QuantroLeanLauncher/config.json`, `src/Lean/QuantroLeanLauncher.NinjaTrader/config.json` | algorithm selection, parameters and data folder |
+| `src/Algorithms/QuantroLeanAlgo.Python/AlgorithmImports.py` | the imports of `QuantConnect.Research`, `QuantConnect.Securities.IndexOption` and `QuantConnect.Indicators.CandlestickPatterns` are removed |
 | `data/market-hours/market-hours-database.json`, `data/symbol-properties/symbol-properties-database.csv` | Dukascopy entries added (the formats have no comments, so the notice is here) |
 
-`src/Lean/MyOptimizer/config.json` and `src/Lean/MyDownloader/config.json` are this repository's settings, written
+`src/Lean/QuantroLeanOptimizer/config.json` and `src/Lean/QuantroLeanDownloader/config.json` are this repository's settings, written
 after Lean's `config.example.json` of the same tools.
 
 ## License

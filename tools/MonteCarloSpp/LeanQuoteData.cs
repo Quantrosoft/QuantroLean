@@ -29,7 +29,7 @@ using QuantConnect.Data;
 using QuantConnect.Data.Market;
 using LeanBar = QuantConnect.Data.Market.Bar;
 
-namespace MyLean.MonteCarlo.Spp;
+namespace QuantroLean.MonteCarlo.Spp;
 
 /// <summary>
 /// Reads and writes Lean minute quote bars for one symbol, and builds synthetic bars by translating each original

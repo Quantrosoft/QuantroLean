@@ -25,7 +25,7 @@ A fixed generator is used on purpose so that a given seed yields byte-identical
 results on any machine and .NET version, which the platform Random does not guarantee.
 */
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>
 /// Deterministic pseudo-random generator (xoshiro256**), seeded through SplitMix64. The same seed produces the

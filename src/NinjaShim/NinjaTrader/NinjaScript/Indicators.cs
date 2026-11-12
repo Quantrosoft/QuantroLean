@@ -487,7 +487,7 @@ namespace NinjaTrader.NinjaScript.Indicators
       }
 
       // Internal mutators — ShimRuntime / Bars / indicator hosting write here.
-      // (Public so BarStream in MyLean.NinjaShim can append without reflection.)
+      // (Public so BarStream in QuantroLean.NinjaShim can append without reflection.)
       public void Append(T value) { _buf.Add(value); _valid.Add(true); }    // real value (Bars OHLC)
       public void RemoveLast()
       {

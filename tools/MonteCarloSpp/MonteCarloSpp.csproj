@@ -25,8 +25,8 @@
 -->
 <Project Sdk="Microsoft.NET.Sdk">
   <!--
-    MyLean Monte Carlo - Synthetic Price Path: rebuilds synthetic price series by resampling the backtest's bar
-    returns, writes them as Lean data with Lean's own LeanDataWriter, and re-runs the whole MyLean backtest on each
+    QuantroLean Monte Carlo - Synthetic Price Path: rebuilds synthetic price series by resampling the backtest's bar
+    returns, writes them as Lean data with Lean's own LeanDataWriter, and re-runs the whole QuantroLean backtest on each
     one, then analyses the distribution of the result metrics with the same statistics as the trade-resampling tool.
     Needs the Lean packages (data writer and types); the statistics and reporting are shared with ..\MonteCarlo.
   -->
@@ -35,11 +35,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <RootNamespace>MyLean.MonteCarlo.Spp</RootNamespace>
+    <RootNamespace>QuantroLean.MonteCarlo.Spp</RootNamespace>
     <AssemblyName>MonteCarloSpp</AssemblyName>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Description>MyLean: Monte Carlo synthetic price path (re-runs the backtest on resampled price series)</Description>
+    <Description>QuantroLean: Monte Carlo synthetic price path (re-runs the backtest on resampled price series)</Description>
   </PropertyGroup>
 
   <ItemGroup>

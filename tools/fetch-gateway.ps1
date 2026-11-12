@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-  Re-fetch and verify the bundled NinjaTrader 8 gateway companion for MyLean.
+  Re-fetch and verify the bundled NinjaTrader 8 gateway companion for QuantroLean.
 
 .DESCRIPTION
   Maintainer / release tool. It re-populates src/Brokerages/NinjaTrader8/gateway/ with the three files a clone ships:

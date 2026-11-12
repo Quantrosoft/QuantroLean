@@ -24,7 +24,7 @@ Fisher-Yates shuffle; the i.i.d. bootstrap (Efron 1979); the circular block boot
 and the stationary bootstrap (Politis and Romano 1994). No code is taken from elsewhere.
 */
 
-namespace MyLean.MonteCarlo;
+namespace QuantroLean.MonteCarlo;
 
 /// <summary>The resampling method applied to the closed-trade profits.</summary>
 public enum ResampleMethod
