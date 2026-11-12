@@ -27,6 +27,11 @@
   // engine
   "data-folder": "../../../../../data/",
 
+  // Exit automatically when the run finishes, instead of waiting for a key press, so a backtest driven from a
+  // script or Claude Code does not hang on "Engine.Main(): Press any key to continue." Set this to false to keep
+  // the console window open until you press a key.
+  "close-automatically": true,
+
   // debugging configuration - options for debugging-method LocalCmdLine, VisualStudio, Debugpy, PyCharm
   "debugging": false,
   "debugging-method": "LocalCmdline",

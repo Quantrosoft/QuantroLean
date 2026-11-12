@@ -83,6 +83,11 @@ The default configuration backtests the example `SmaCrossoverAlgorithm` on the S
 (2013-10-07 to 2013-10-11). Command line options override the configuration, for example
 `--algorithm-type-name`, `--algorithm-location` and `--data-folder`.
 
+The launcher exits automatically when the run finishes (`close-automatically` is `true` in `config.json`; set it to
+`false` to keep the console window open until a key press). Two `ERROR` lines on the sample data are expected and
+harmless — `map_files` and `interest-rate.csv` are missing; the examples use neither equity symbol mapping nor an
+interest-rate curve, so the results are unaffected.
+
 Python algorithms: set `"algorithm-language"` to `"Python"` and `"algorithm-location"` to the `.py` file; both
 lines are prepared in `config.json`. Lean needs Python 3.11 and the environment variable `PYTHONNET_PYDLL`, see
 Lean's [Algorithm.Python/readme.md](https://github.com/QuantConnect/Lean/blob/master/Algorithm.Python/readme.md).

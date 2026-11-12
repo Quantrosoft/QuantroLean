@@ -61,6 +61,11 @@ The default configuration backtests the example `SmaCrossoverAlgorithm` on the S
 options override the configuration, for example `--algorithm-type-name`, `--algorithm-location` and `--data-folder`.
 Python algorithms need Lean's Python runtime (see `README.md`).
 
+The launcher exits automatically when the run finishes (`close-automatically` is `true` in `config.json`; set it to
+`false` to keep the console open until a key press). On the sample data two `ERROR` lines are expected and harmless:
+`map_files` and `interest-rate.csv` are missing — the examples use neither equity symbol mapping nor an interest-rate
+curve, so the results are unaffected.
+
 ## Optimize
 
     cd src/Lean/QuantroLeanOptimizer/bin/Debug
