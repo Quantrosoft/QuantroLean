@@ -40,7 +40,7 @@ namespace QuantroLean.Tools.SampleData
    /// without touching it.</summary>
    internal static class Program
    {
-      private const string LeanCommit = "a99fba023df877bd2301c14b4db37f40101d273c";
+      private const string LeanCommit = "530072ee159c591b31b14e45843bb59226f7ce60";
 
       private static readonly (string Path, long Size, string Sha256)[] Files =
       {

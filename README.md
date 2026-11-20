@@ -245,7 +245,7 @@ daily returns. The Monte Carlo is an independent implementation written from the
    in `data/` (three-way: this repository / Lean at the old commit / Lean at the new commit).
 4. Set the new commit and the files' sizes and SHA-256 in `tools/SampleData/Program.cs`.
 
-Current: `2.5.18248` = Lean commit `a99fba023df877bd2301c14b4db37f40101d273c`.
+Current: `2.5.18257` = Lean commit `530072ee159c591b31b14e45843bb59226f7ce60`.
 
 ## Changes to Lean files
 
