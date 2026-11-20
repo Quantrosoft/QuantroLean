@@ -25,16 +25,16 @@
     NuGet Central Package Management: every package version of the solution is set here, once.
     All QuantConnect.* packages are built from the same Lean commit and must carry the same version;
     the Lean sources copied into src/Lean must match that commit (see README, "Updating Lean").
-    2.5.18248 = Lean commit a99fba023df877bd2301c14b4db37f40101d273c.
+    2.5.18257 = Lean commit 530072ee159c591b31b14e45843bb59226f7ce60.
   -->
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="QuantConnect.Algorithm" Version="2.5.18248" />
-    <PackageVersion Include="QuantConnect.Algorithm.Framework" Version="2.5.18248" />
-    <PackageVersion Include="QuantConnect.AlgorithmFactory" Version="2.5.18248" />
-    <PackageVersion Include="QuantConnect.Api" Version="2.5.18248" />
+    <PackageVersion Include="QuantConnect.Algorithm" Version="2.5.18257" />
+    <PackageVersion Include="QuantConnect.Algorithm.Framework" Version="2.5.18257" />
+    <PackageVersion Include="QuantConnect.AlgorithmFactory" Version="2.5.18257" />
+    <PackageVersion Include="QuantConnect.Api" Version="2.5.18257" />
     <PackageVersion Include="QuantConnect.Brokerages" Version="2.5.18257" />
     <PackageVersion Include="QuantConnect.Common" Version="2.5.18257" />
     <PackageVersion Include="QuantConnect.Compression" Version="2.5.18257" />
